@@ -82,7 +82,7 @@ public class DetalhesSocio extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Pagar Quotas");
+        jButton1.setText(" Quotas Pagas");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -190,7 +190,7 @@ public class DetalhesSocio extends javax.swing.JFrame {
     }//GEN-LAST:event_textField2ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        PagarQuotas novo = new PagarQuotas();
+        QuotasPagas novo = new QuotasPagas();
         novo.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
