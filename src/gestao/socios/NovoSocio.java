@@ -5,6 +5,7 @@
  */
 package gestao.socios;
 
+import java.awt.event.ActionEvent;
 import javax.swing.JFrame;
 
 /**
@@ -17,10 +18,6 @@ public class NovoSocio extends JFrame {
      * Creates new form NovoSocio
      */
     public NovoSocio() {
-        initComponents();
-    }
-    
-    public NovoSocio(GestaoSocios Gestao) {
         initComponents();
     }
 
@@ -62,12 +59,6 @@ public class NovoSocio extends JFrame {
 
         jLabel5.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel5.setText("Morada:");
-
-        TNumero.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                TNumeroActionPerformed(evt);
-            }
-        });
 
         TNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,8 +145,6 @@ public class NovoSocio extends JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_TNomeActionPerformed
 
-    
-    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         String nome = this.TNome.getText();
@@ -164,7 +153,7 @@ public class NovoSocio extends JFrame {
         String ano = this.TAno.getText();
         String morada = this.TMorada.getText();
         
-        GestaoSocios.addAluno(new Aluno(nome, numero, curso, ano, morada));
+        PaginaPrincipal.gestao.addAluno(new Aluno(nome, numero, curso, ano, morada));
         
         /*
         this.Pagina.Model.insertRow(Pagina.Model.getRowCount(), new Object[]{
@@ -174,10 +163,6 @@ public class NovoSocio extends JFrame {
         */
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void TNumeroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_TNumeroActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_TNumeroActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:

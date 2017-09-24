@@ -21,14 +21,14 @@ public class PaginaPrincipal extends JFrame implements Observer {
      * Creates new form PaginaPrincipal
      */
     
-    public DefaultTableModel Model;
-    GestaoSocios gestao;
+    public DefaultTableModel model;
+    public static GestaoSocios gestao;
     
     public PaginaPrincipal() {
         initComponents();
-        this.gestao = new GestaoSocios();
-        this.gestao.addObserver(this);        
-        //Model = (DefaultTableModel)tblCustomer.getModel();
+        gestao = new GestaoSocios();
+        gestao.addObserver(this);        
+        //model = (DefaultTableModel)tblCustomer.getModel();
     }
 
     /**
@@ -131,7 +131,7 @@ public class PaginaPrincipal extends JFrame implements Observer {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        NovoSocio novo = new NovoSocio(gestao);
+        NovoSocio novo = new NovoSocio();
         novo.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
