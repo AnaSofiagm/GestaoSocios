@@ -150,7 +150,9 @@ public class PaginaPrincipal extends JFrame implements Observer {
         } catch (ExecutionException ex1) {
             Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex1);
         }
-        gestao.addAluno(aluno);
+        if(aluno!=null){
+            gestao.addAluno(aluno);
+        }
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
