@@ -22,12 +22,12 @@ public class PaginaPrincipal extends JFrame implements Observer {
      */
     
     public DefaultTableModel Model;
-    GestaoSocios Gestao;
+    GestaoSocios gestao;
     
     public PaginaPrincipal() {
         initComponents();
-        this.Gestao = new GestaoSocios();
-        this.Gestao.addObserver(this);        
+        this.gestao = new GestaoSocios();
+        this.gestao.addObserver(this);        
         //Model = (DefaultTableModel)tblCustomer.getModel();
     }
 
@@ -131,7 +131,7 @@ public class PaginaPrincipal extends JFrame implements Observer {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        NovoSocio novo = new NovoSocio(Gestao);
+        NovoSocio novo = new NovoSocio(gestao);
         novo.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
