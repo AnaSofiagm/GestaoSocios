@@ -7,28 +7,29 @@ package gestao.socios;
 
 import java.util.Observable;
 import java.util.Observer;
+import java.util.concurrent.Callable;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
-
-import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author miguelcunha
  */
 public class PaginaPrincipal extends JFrame implements Observer {
-
     /**
      * Creates new form PaginaPrincipal
      */
-    
-    public DefaultTableModel model;
-    public static GestaoSocios gestao;
+    private GestaoSocios gestao;
     
     public PaginaPrincipal() {
         initComponents();
         gestao = new GestaoSocios();
         gestao.addObserver(this);        
-        //model = (DefaultTableModel)tblCustomer.getModel();
     }
 
     /**
@@ -131,8 +132,25 @@ public class PaginaPrincipal extends JFrame implements Observer {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        NovoSocio novo = new NovoSocio();
-        novo.setVisible(true);
+        Callable<Aluno> c =(() -> {
+            NovoSocio novo = new NovoSocio();
+            novo.setVisible(true);
+            
+            synchronized(novo){
+                novo.wait();
+            }
+            return novo.getAluno();
+        });
+        ExecutorService ex = Executors.newSingleThreadExecutor();
+        Aluno aluno = null;
+        try {
+            aluno = ex.submit(c).get();
+        } catch (InterruptedException ex1) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex1);
+        } catch (ExecutionException ex1) {
+            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex1);
+        }
+        gestao.addAluno(aluno);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**

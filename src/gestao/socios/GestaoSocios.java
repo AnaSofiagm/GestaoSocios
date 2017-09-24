@@ -13,7 +13,7 @@ public class GestaoSocios extends Observable {
         return alunos;
     }
     public void pagarQuota(int numero, String data){
-       int i;
+
     }
     public Aluno getAluno(int num){
         return alunos.get(num+"");
