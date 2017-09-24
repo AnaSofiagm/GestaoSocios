@@ -10,6 +10,7 @@ import javax.swing.JFrame;
 /**
  *
  * @author miguelcunha
+ * @author Pedro Mendes
  */
 public class NovoSocio extends JFrame{
 
