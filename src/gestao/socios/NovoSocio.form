@@ -136,9 +136,6 @@
     <Component class="javax.swing.JTextField" name="TNumero">
     </Component>
     <Component class="javax.swing.JTextField" name="TNome">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="TNomeActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="TCurso">
     </Component>
