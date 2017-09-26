@@ -14,13 +14,14 @@ import javax.swing.JFrame;
  */
 public class NovoSocio extends JFrame{
 
-    private Aluno aluno;
+    private GestaoSocios gestao;
     
     /**
      * Creates new form NovoSocio
      */
-    public NovoSocio() {
+    public NovoSocio(GestaoSocios gestao) {
         initComponents();
+        this.gestao = gestao;
     }
 
     /**
@@ -145,12 +146,9 @@ public class NovoSocio extends JFrame{
         String ano = this.TAno.getText();
         String morada = this.TMorada.getText();
         
-        this.aluno = new Aluno(nome, numero, curso, ano, morada);
+        this.gestao.addAluno(new Aluno(nome, numero, curso, ano, morada));
         
         this.setVisible(false);
-        synchronized(this){
-            this.notify();
-        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -176,7 +174,4 @@ public class NovoSocio extends JFrame{
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
 
-    public Aluno getAluno() {
-        return this.aluno;
-    }
 }

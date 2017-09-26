@@ -136,27 +136,8 @@ public class PaginaPrincipal extends JFrame implements Observer {
 
     private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
         // TODO add your handling code here:
-        Callable<Aluno> c =(() -> {
-            NovoSocio novo = new NovoSocio();
-            novo.setVisible(true);
-            
-            synchronized(novo){
-                novo.wait();
-            }
-            return novo.getAluno();
-        });
-        ExecutorService ex = Executors.newSingleThreadExecutor();
-        Aluno aluno = null;
-        try {
-            aluno = ex.submit(c).get();
-        } catch (InterruptedException ex1) {
-            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex1);
-        } catch (ExecutionException ex1) {
-            Logger.getLogger(PaginaPrincipal.class.getName()).log(Level.SEVERE, null, ex1);
-        }
-        if(aluno!=null){
-            gestao.addAluno(aluno);
-        }
+        NovoSocio novo = new NovoSocio(this.gestao);
+        novo.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
