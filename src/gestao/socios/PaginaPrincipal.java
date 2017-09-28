@@ -9,14 +9,8 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
-import java.util.concurrent.Callable;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JFrame;
-import javax.swing.table.TableModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -70,22 +64,7 @@ public class PaginaPrincipal extends JFrame implements Observer {
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Número", "Título"
@@ -94,9 +73,16 @@ public class PaginaPrincipal extends JFrame implements Observer {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane2.setViewportView(jTable1);
@@ -181,9 +167,14 @@ public class PaginaPrincipal extends JFrame implements Observer {
     }
     
     private void updateTable() {
-        TableModel tModel = this.jTable1.getModel();
+        DefaultTableModel tModel = (DefaultTableModel) this.jTable1.getModel();
         int i=0;
         Map<String,Aluno> alunos =  this.gestao.getAlunos();
+        if(alunos.size()>this.jTable1.getRowCount()){
+            tModel.addRow(new Object[2]);
+        }else if(alunos.size()<this.jTable1.getRowCount()){
+            tModel.removeRow(this.jTable1.getRowCount()-1);
+        }
         Iterator<Map.Entry<String, Aluno>> it = alunos.entrySet().iterator();
         while(it.hasNext()){
             Aluno a = it.next().getValue();

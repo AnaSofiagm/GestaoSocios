@@ -35,6 +35,4 @@ public class Aluno {
     public String getAno(){ return this.ano; }
     public String getMorada(){ return this.morada; }
     public Map<String, Double> getDatas(){ return this.datas; }
-    
-    
 }
