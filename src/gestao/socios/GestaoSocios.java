@@ -14,7 +14,7 @@ public class GestaoSocios extends Observable {
     
     public GestaoSocios(){
          this.alunos = new HashMap<>();
-         this.alunos.put("1",new Aluno("Pedro","123","MIEI","3","Rua"));
+         this.alunos.put("1",new Aluno("a79003","Mendes","MIEI","3","Rua"));
     }
     public Map<String, Aluno> getAlunos(){
         return alunos;
@@ -22,11 +22,17 @@ public class GestaoSocios extends Observable {
     public void pagarQuota(int numero, String data){
 
     }
-    public Aluno getAluno(int num){
-        return alunos.get(num+"");
+    public Aluno getAluno(String num){
+        return alunos.get(num);
     }
     public void addAluno(Aluno a){
         alunos.put(a.getNumero(), a);
+        this.setChanged();
+        this.notifyObservers(alunos);
+    }
+
+    void updateAluno(String numAluno, Aluno aluno) {
+        alunos.replace(numAluno, aluno);
         this.setChanged();
         this.notifyObservers(alunos);
     }

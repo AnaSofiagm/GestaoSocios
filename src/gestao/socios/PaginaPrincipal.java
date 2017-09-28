@@ -10,6 +10,7 @@ import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 import javax.swing.JFrame;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -43,9 +44,9 @@ public class PaginaPrincipal extends JFrame implements Observer {
         jScrollPane2 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
+        jMenuFile = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
-        jMenu2 = new javax.swing.JMenu();
+        jMenuEdit = new javax.swing.JMenu();
 
         jInternalFrame1.setVisible(true);
 
@@ -71,7 +72,7 @@ public class PaginaPrincipal extends JFrame implements Observer {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false
@@ -85,9 +86,14 @@ public class PaginaPrincipal extends JFrame implements Observer {
                 return canEdit [columnIndex];
             }
         });
+        jTable1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTable1MouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(jTable1);
 
-        jMenu1.setText("File");
+        jMenuFile.setText("File");
 
         jMenuItem1.setText("Novo Socio");
         jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
@@ -95,12 +101,12 @@ public class PaginaPrincipal extends JFrame implements Observer {
                 jMenuItem1ActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenuFile.add(jMenuItem1);
 
-        jMenuBar1.add(jMenu1);
+        jMenuBar1.add(jMenuFile);
 
-        jMenu2.setText("Edit");
-        jMenuBar1.add(jMenu2);
+        jMenuEdit.setText("Edit");
+        jMenuBar1.add(jMenuEdit);
 
         setJMenuBar(jMenuBar1);
 
@@ -125,6 +131,15 @@ public class PaginaPrincipal extends JFrame implements Observer {
         NovoSocio novo = new NovoSocio(this.gestao);
         novo.setVisible(true);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void jTable1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTable1MouseClicked
+        if(evt.getClickCount()==2){
+            int row = ((JTable) evt.getSource()).getSelectedRow();
+            String number = (String) this.jTable1.getValueAt(row, 0);
+            DetalhesSocio dSocio = new DetalhesSocio(this.gestao,number);
+            dSocio.setVisible(true);
+        }
+    }//GEN-LAST:event_jTable1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -187,9 +202,9 @@ public class PaginaPrincipal extends JFrame implements Observer {
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JMenu jMenu1;
-    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenu jMenuEdit;
+    private javax.swing.JMenu jMenuFile;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable jTable1;

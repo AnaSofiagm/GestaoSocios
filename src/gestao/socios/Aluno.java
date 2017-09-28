@@ -4,25 +4,25 @@ import java.util.Map;
 
 public class Aluno {
    
-    private String nome;
     private String numero;
+    private String nome;
     private String curso;
     private String ano;
     private String morada;
     private Map<String, Double> datas;
     
     public Aluno(){
-        this.nome = "nome";
         this.numero = "0";
+        this.nome = "nome";
         this.curso = "";
         this.ano = "";
         this.morada = "";
         this.datas = null;
     }
     
-    public Aluno(String n, String nu, String c, String a, String m){
-        this.nome = n;
+    public Aluno(String nu, String n, String c, String a, String m){
         this.numero = nu;
+        this.nome = n;
         this.curso = c;
         this.ano = a;
         this.morada = m;
