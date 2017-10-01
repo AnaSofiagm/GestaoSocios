@@ -163,7 +163,7 @@ public class DetalhesSocio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonQuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuotasActionPerformed
-        QuotasPagas novo = new QuotasPagas();
+        QuotasPagas novo = new QuotasPagas(this.gestao.getAluno(numAluno).getQuotas());
         novo.setVisible(true);
     }//GEN-LAST:event_jButtonQuotasActionPerformed
 

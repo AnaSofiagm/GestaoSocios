@@ -10,7 +10,7 @@ import java.util.Observable;
  */
 public class GestaoSocios extends Observable {
 
-    public Map<String, Aluno> alunos;
+    private Map<String, Aluno> alunos;
     
     public GestaoSocios(){
          this.alunos = new HashMap<>();
@@ -18,9 +18,6 @@ public class GestaoSocios extends Observable {
     }
     public Map<String, Aluno> getAlunos(){
         return alunos;
-    }
-    public void pagarQuota(int numero, String data){
-
     }
     public Aluno getAluno(String num){
         return alunos.get(num);

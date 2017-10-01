@@ -1,6 +1,5 @@
 package gestao.socios;
 
-import java.util.Map;
 
 public class Aluno {
    
@@ -9,7 +8,7 @@ public class Aluno {
     private String curso;
     private String ano;
     private String morada;
-    private Map<String, Double> datas;
+    private Quotas quotas;
     
     public Aluno(){
         this.numero = "0";
@@ -17,7 +16,7 @@ public class Aluno {
         this.curso = "";
         this.ano = "";
         this.morada = "";
-        this.datas = null;
+        this.quotas = new Quotas();
     }
     
     public Aluno(String nu, String n, String c, String a, String m){
@@ -26,7 +25,7 @@ public class Aluno {
         this.curso = c;
         this.ano = a;
         this.morada = m;
-        this.datas = null;
+        this.quotas = new Quotas();
     }
     
     public String getNome(){ return this.nome; }
@@ -34,5 +33,5 @@ public class Aluno {
     public String getCurso(){ return this.curso; }
     public String getAno(){ return this.ano; }
     public String getMorada(){ return this.morada; }
-    public Map<String, Double> getDatas(){ return this.datas; }
+    public Quotas getQuotas(){ return this.quotas; }
 }
