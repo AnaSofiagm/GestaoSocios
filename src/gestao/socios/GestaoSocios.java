@@ -32,7 +32,8 @@ public class GestaoSocios extends Observable {
     }
 
     void updateAluno(String numAluno, Aluno aluno) {
-        alunos.replace(numAluno, aluno);
+        alunos.remove(numAluno);
+        alunos.put(aluno.getNumero(), aluno);
         this.setChanged();
         this.notifyObservers(alunos);
     }

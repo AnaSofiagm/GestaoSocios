@@ -21,9 +21,6 @@ public class DetalhesSocio extends javax.swing.JFrame {
         this.numAluno = numAluno;
         initComponents();
         Aluno a = this.gestao.getAluno(numAluno);
-        assert(a!=null);
-        assert(a.getNumero()!=null);
-        //TODO Isto esta a dar NullPointerException e não sei porque.
         this.textFieldNumero.setText(a.getNumero());
         this.textFieldNome.setText(a.getNome());
         this.textFieldCurso.setText(a.getCurso());
@@ -175,8 +172,8 @@ public class DetalhesSocio extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonFecharActionPerformed
 
     private void jButtonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonActualizarActionPerformed
-        this.gestao.updateAluno(numAluno, new Aluno(this.textFieldNome.getText(),
-                                                    this.textFieldNumero.getText(),
+        this.gestao.updateAluno(numAluno, new Aluno(this.textFieldNumero.getText(),
+                                                    this.textFieldNome.getText(),
                                                     this.textFieldCurso.getText(),
                                                     this.textFieldAno.getText(),
                                                     this.textFieldMorada.getText()));

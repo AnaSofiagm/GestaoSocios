@@ -146,7 +146,7 @@ public class NovoSocio extends JFrame{
         String ano = this.TAno.getText();
         String morada = this.TMorada.getText();
         
-        this.gestao.addAluno(new Aluno(nome, numero, curso, ano, morada));
+        this.gestao.addAluno(new Aluno(numero, nome, curso, ano, morada));
         
         this.setVisible(false);
     }//GEN-LAST:event_jButtonGuardarActionPerformed
