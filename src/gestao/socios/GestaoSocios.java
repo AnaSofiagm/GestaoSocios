@@ -14,7 +14,6 @@ public class GestaoSocios extends Observable {
     
     public GestaoSocios(){
          this.alunos = new HashMap<>();
-         this.alunos.put("a79003",new Aluno("a79003","Mendes","MIEI","3","Rua"));
     }
     public Map<String, Aluno> getAlunos(){
         return alunos;

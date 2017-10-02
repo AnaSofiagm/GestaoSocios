@@ -25,9 +25,6 @@ public class Quotas extends Observable{
     
     public Quotas(){
         this.quotas = new HashMap<>();
-        LocalDateTime now = LocalDateTime.now();
-        Date date = Date.from(now.atZone(ZoneId.systemDefault()).toInstant());
-        this.quotas.put(DF.format(date),(float) 30.0);
     }
     void pagar(float valor) {
         LocalDateTime now = LocalDateTime.now();
