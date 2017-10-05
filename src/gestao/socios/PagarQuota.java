@@ -5,19 +5,25 @@
  */
 package gestao.socios;
 
+import java.awt.event.WindowEvent;
+
 /**
  *
  * @author Pedro Mendes
  */
 public class PagarQuota extends javax.swing.JFrame {
 
-    private Quotas quotas;
+    private final GestaoSocios gestao;
+    private final String numero;
     /**
      * Creates new form PagarQuota
+     * @param gestao
+     * @param numero
      */
-    public PagarQuota(Quotas quotas) {
+    public PagarQuota(String numero, GestaoSocios gestao) {
         initComponents();
-        this.quotas = quotas;
+        this.gestao = gestao;
+        this.numero = numero;
     }
 
     /**
@@ -72,8 +78,6 @@ public class PagarQuota extends javax.swing.JFrame {
                 .addComponent(jButtonErrorDialogOk)
                 .addContainerGap(30, Short.MAX_VALUE))
         );
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setText("Valor");
 
@@ -133,7 +137,7 @@ public class PagarQuota extends javax.swing.JFrame {
         
         try{
             valor = Float.parseFloat(this.jTextPaneValor.getText());
-            this.quotas.pagar(valor);
+            this.gestao.pagar(this.numero,valor);
             this.setVisible(false);
         }catch(NumberFormatException e){
             this.jDialogError.setVisible(true);
@@ -146,8 +150,9 @@ public class PagarQuota extends javax.swing.JFrame {
 
     private void jButtonErrorDialogOkActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonErrorDialogOkActionPerformed
         this.jDialogError.setVisible(false);
+        this.jTextPaneValor.requestFocus();
     }//GEN-LAST:event_jButtonErrorDialogOkActionPerformed
-
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancelar;
     private javax.swing.JButton jButtonErrorDialogOk;

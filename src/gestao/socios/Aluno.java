@@ -1,5 +1,8 @@
 package gestao.socios;
 
+import java.util.HashMap;
+import java.util.Map;
+
 
 public class Aluno {
    
@@ -8,7 +11,7 @@ public class Aluno {
     private String curso;
     private String ano;
     private String morada;
-    private Quotas quotas;
+    private Map<String,Float> quotas;
     
     public Aluno(){
         this.numero = "0";
@@ -16,7 +19,7 @@ public class Aluno {
         this.curso = "";
         this.ano = "";
         this.morada = "";
-        this.quotas = new Quotas();
+        this.quotas = new HashMap<>();
     }
     
     public Aluno(String nu, String n, String c, String a, String m){
@@ -25,7 +28,7 @@ public class Aluno {
         this.curso = c;
         this.ano = a;
         this.morada = m;
-        this.quotas = new Quotas();
+        this.quotas = new HashMap<>();
     }
     
     public String getNome(){ return this.nome; }
@@ -33,5 +36,5 @@ public class Aluno {
     public String getCurso(){ return this.curso; }
     public String getAno(){ return this.ano; }
     public String getMorada(){ return this.morada; }
-    public Quotas getQuotas(){ return this.quotas; }
+    public Map<String,Float> getQuotas(){ return this.quotas; }
 }

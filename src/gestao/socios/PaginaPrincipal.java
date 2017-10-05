@@ -68,7 +68,7 @@ public class PaginaPrincipal extends JFrame implements Observer {
 
             },
             new String [] {
-                "Número", "Título"
+                "Número", "Nome"
             }
         ) {
             Class[] types = new Class [] {

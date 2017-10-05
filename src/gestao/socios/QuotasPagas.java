@@ -17,14 +17,18 @@ import javax.swing.table.DefaultTableModel;
  */
 public class QuotasPagas extends javax.swing.JFrame implements Observer{
 
-    private Quotas quotas;
+    private final GestaoSocios gestao;
+    private final String numero;
     /**
      * Creates new form PagarQuotas
+     * @param numero
+     * @param gestao
      */
-    public QuotasPagas(Quotas quotas) {
+    public QuotasPagas(String numero, GestaoSocios gestao) {
         initComponents();
-        this.quotas = quotas;
-        quotas.addObserver(this);
+        this.gestao = gestao;
+        this.numero = numero;
+        gestao.addObserver(this);
         updateTable();
     }
 
@@ -41,8 +45,6 @@ public class QuotasPagas extends javax.swing.JFrame implements Observer{
         jTable1 = new javax.swing.JTable();
         jButtonPagarQuotas = new javax.swing.JButton();
         jButtonOk = new javax.swing.JButton();
-
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,7 +112,7 @@ public class QuotasPagas extends javax.swing.JFrame implements Observer{
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonPagarQuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonPagarQuotasActionPerformed
-        PagarQuota novo = new PagarQuota(this.quotas);
+        PagarQuota novo = new PagarQuota(this.numero, this.gestao);
         novo.setVisible(true);
     }//GEN-LAST:event_jButtonPagarQuotasActionPerformed
 
@@ -132,18 +134,16 @@ public class QuotasPagas extends javax.swing.JFrame implements Observer{
 
     private void updateTable() {
         DefaultTableModel tModel = (DefaultTableModel) this.jTable1.getModel();
-        Map<String,Float> quotas =  this.quotas.getQuotas();
-        if(quotas.size()>this.jTable1.getRowCount()){
+        Map<String,Float> quotas =  this.gestao.getAluno(this.numero).getQuotas();
+        while(quotas.size()>this.jTable1.getRowCount()){
             tModel.addRow(new Object[2]);
-        }else if(quotas.size()<this.jTable1.getRowCount()){
-            tModel.removeRow(this.jTable1.getRowCount()-1);
         }
         Iterator<Map.Entry<String, Float>> it = quotas.entrySet().iterator();
         int i=0;
         while(it.hasNext()){
-            String key = it.next().getKey();
-            tModel.setValueAt(key,i,0);
-            tModel.setValueAt(quotas.get(key),i,1);
+            Map.Entry<String, Float> e = it.next();
+            tModel.setValueAt(e.getKey(),i,0);
+            tModel.setValueAt(e.getValue(),i,1);
             i++;
         }
         this.jTable1.setModel(tModel);

@@ -46,8 +46,6 @@ public class NovoSocio extends JFrame{
         jButtonGuardar = new javax.swing.JButton();
         jButtonFechar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("Lucida Grande", 0, 18)); // NOI18N
         jLabel1.setText("Número:");
 

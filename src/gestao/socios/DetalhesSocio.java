@@ -52,8 +52,6 @@ public class DetalhesSocio extends javax.swing.JFrame {
         jButtonFechar = new javax.swing.JButton();
         jButtonActualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
         jLabel1.setFont(new java.awt.Font("Lucida Console", 0, 18)); // NOI18N
         jLabel1.setText("Numero:");
 
@@ -163,7 +161,7 @@ public class DetalhesSocio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonQuotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonQuotasActionPerformed
-        QuotasPagas novo = new QuotasPagas(this.gestao.getAluno(numAluno).getQuotas());
+        QuotasPagas novo = new QuotasPagas(this.numAluno,this.gestao);
         novo.setVisible(true);
     }//GEN-LAST:event_jButtonQuotasActionPerformed
 
