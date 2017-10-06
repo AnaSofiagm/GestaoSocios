@@ -14,6 +14,7 @@ import javax.swing.table.DefaultTableModel;
 /**
  *
  * @author Diana
+ * @author Pedro Mendes
  */
 public class QuotasPagas extends javax.swing.JFrame implements Observer{
 
